@@ -1,8 +1,9 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import Styles from '../assets/SignUp.module.css'
 import { auth } from '../firebase';
+import { useNavigate } from 'react-router-dom';
 function SignUp(){
-
+    const navigate = useNavigate();
     const handlesignUp = async (e) => {
         e.preventDefault();
         const form = e.target;
@@ -10,7 +11,7 @@ function SignUp(){
         const password = form.elements[1].value;
         try {
             const user = await createUserWithEmailAndPassword(auth, email, password);
-            console.log(user);
+            navigate('/signin')
         } catch(e) {
             console.log(e.message);
         }

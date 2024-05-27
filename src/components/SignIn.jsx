@@ -1,7 +1,9 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import Styles from '../assets/SignUp.module.css'
 import { auth } from '../firebase';
-function SignIn(){
+import { useNavigate } from 'react-router-dom';
+function SignIn(props){
+    const navigate = useNavigate();
     const handlesignIn = async (e) => {
         e.preventDefault();
         const form = e.target;
@@ -9,7 +11,9 @@ function SignIn(){
         const password = form.elements[1].value;
         try {
             const user = await signInWithEmailAndPassword(auth, email, password);
-            console.log(user);
+            props.setUserdata.setIsLoggedIn(true);
+            props.setUserdata.setToken(user.user.uid);
+            navigate('/');
         } catch(e) {
             console.log(e.message);
         }
