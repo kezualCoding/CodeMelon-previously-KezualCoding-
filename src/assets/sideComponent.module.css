@@ -1,5 +1,4 @@
 .sideComponent{
-    color : silver;
     align-items: center;
     display: flex;
     justify-content: space-between;
@@ -15,7 +14,7 @@
     transform: scale(1.2);
 }
 
-button{
+.navbarButtonsDark{
     background: none;
     align-items: center;
     border : none;
@@ -26,13 +25,32 @@ button{
     transition: all 0.5s ease;
 }
 
-button:hover{
+.navbarButtonsDark:hover{
     background-color: white;
     color: black;
     transform: translateY(-4px);
 }
 
-.profileText {
+.profileTextDark {
+    color : silver;
     font-weight: bold;
-    transition: all 0.2s ease-out;
+    transition: all 0.5s ease-out;
+    position: absolute;
+    right : 100px;
 }
+
+.loginDark {
+    background-color: black;
+    color: silver;
+    font-weight: bold;
+    font-size: 20px;
+    background-color: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.loginDark:hover {
+    transform: translateY(-4px);
+}
+

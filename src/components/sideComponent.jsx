@@ -8,13 +8,21 @@ function SideComponent(props) {
     if(props.userdata.isLoggedIn){
         return (
             <div className={Styles.sideComponent}>
-                <p className={Styles.profileText} style={{transform : isHovered ? "translateX(200px)" : "translateX(1000px)", color : isHovered ? "silver" : "black"}}>Profile</p>
-                <button className={`${Styles.study} ${Styles.btn200}`} style={{opacity: isHovered ? 0 : 1, visibility: isHovered ? 'hidden' : 'visible'}}>STUDY</button>
-                <button className={Styles.games} style={{opacity: isHovered ? 0 : 1, visibility: isHovered ? 'hidden' : 'visible'}}>GAMES</button>
-                <button className={Styles.playground} style={{opacity: isHovered ? 0 : 1, visibility: isHovered ? 'hidden' : 'visible'}}>PLAYGROUND</button>
+                <p className={Styles.profileTextDark} style={{opacity : isHovered ? "1" : "0"}}>Profile</p>
+                <button className={`${Styles.navbarButtonsDark}`} style={{opacity: isHovered ? 0 : 1, visibility: isHovered ? 'hidden' : 'visible'}}>STUDY</button>
+                <button className={Styles.navbarButtonsDark} style={{opacity: isHovered ? 0 : 1, visibility: isHovered ? 'hidden' : 'visible'}}>GAMES</button>
+                <button className={Styles.navbarButtonsDark} style={{opacity: isHovered ? 0 : 1, visibility: isHovered ? 'hidden' : 'visible'}}>PLAYGROUND</button>
                 <img src={defaultProfile} alt="profile" className={Styles.profile} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} />
             </div>
         );
+    }else{
+        return(
+            <div className={Styles.sideComponent}>
+                <button className={Styles.loginDark}>
+                    Log In
+                </button>
+            </div>
+        )
     }
 }
 
