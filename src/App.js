@@ -20,17 +20,20 @@ function App() {
     email: email
   };
 
+  let setUserdata ={ 
+    setIsLoggedIn: setIsLoggedIn,
+    setUsername: setUsername,
+    setToken: setToken,
+    setEmail: setEmail
+  };
+
   useEffect(() => {
     window.localStorage.setItem('userdata', JSON.stringify(userdata));
   }, [isLoggedIn, username, token, email]);
 
-  function handleTrueFalse() {
-    setIsLoggedIn(!isLoggedIn);
-  }
-
   return (
     <Router>
-      <Navbar />
+      <Navbar userdata = {userdata}/>
       <Routes>
         {/* <Route path = "/" element ={<Navbar />} /> */}
       </Routes>

@@ -1,10 +1,10 @@
 import Styles from '../assets/Navbar.module.css';
-
-function Navbar(){
+import SideComponent from './sideComponent';
+function Navbar(props){
     return (
         <div className={Styles.navbarDark}>
             <div className={Styles.logoDark}>Kezual Coding</div>
-            <div className={Styles.logIn}></div>
+            <SideComponent {...props}/>
         </div>
     )
 

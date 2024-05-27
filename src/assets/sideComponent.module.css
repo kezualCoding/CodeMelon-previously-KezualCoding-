@@ -1,0 +1,38 @@
+.sideComponent{
+    color : silver;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+.profile {
+    width: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.5s ease; /* Add this line */
+}
+
+.profile:hover{
+    transform: scale(1.2);
+}
+
+button{
+    background: none;
+    align-items: center;
+    border : none;
+    color: silver;
+    margin: 0 1.2vw;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+button:hover{
+    background-color: white;
+    color: black;
+    transform: translateY(-4px);
+}
+
+.profileText {
+    font-weight: bold;
+    transition: all 0.2s ease-out;
+}
