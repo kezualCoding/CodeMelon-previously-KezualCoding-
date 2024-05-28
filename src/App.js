@@ -8,6 +8,8 @@ import { set } from 'firebase/database';
 import { ToastContainer } from 'react-toastify';
 import Profile from './components/Profile';
 import 'react-toastify/dist/ReactToastify.css';
+import NotFoundBrokenUrlPage from './components/NotFoundBrokenUrlPage';
+import HomePage from './components/HomePage';
 
 
 function App() {
@@ -56,6 +58,8 @@ function App() {
         <Route path = "/signup" element ={<SignUp />} />
         <Route path = "/signin" element ={<SignIn  setUserdata = {setUserdata}/>} />
         <Route path = '/profile/:username' element = {<Profile userdata = {userdata} themeTools = {themeTools} setUserdata = {setUserdata}/>} />
+        <Route path = "*" element = {<NotFoundBrokenUrlPage />} />
+        <Route path='/' element = {<HomePage />} />
       </Routes>
     </Router>
   )
