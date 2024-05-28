@@ -32,7 +32,7 @@ function SignUp(){
         const password = form.elements[2].value;
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            await setDoc(doc(db, 'users', userCredential.user.uid), {
+            await setDoc(doc(db, 'users', username), {
                 username: username,
                 email: email,
                 profile_url: '',
@@ -42,6 +42,7 @@ function SignUp(){
                 points: 0,
                 accounts: {hackerrank:'', codeforces:'', codechef:'', leetcode:''},
                 verified: false,
+                uid : userCredential.user.uid
             });
             navigate('/signin')
         } catch(e) {
@@ -63,7 +64,6 @@ function SignUp(){
             </div>
         </div>
     )
-
 }
 
 export default SignUp;
