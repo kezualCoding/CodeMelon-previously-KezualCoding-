@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import Styles from '../assets/sideComponent.module.css';
 import defaultProfile from '../assets/images/defaultProfile.png';
+import { Link, useNavigate } from 'react-router-dom';
 
 function SideComponent(props) {
     const [isHovered, setIsHovered] = useState(false);
-
+    const navigate = useNavigate();
+    function handleLogin(){
+        navigate('/signin');
+    }
     if(props.userdata.isLoggedIn){
         return (
             <div className={Styles.sideComponent}>
@@ -18,7 +22,7 @@ function SideComponent(props) {
     }else{
         return(
             <div className={Styles.sideComponent}>
-                <button className={Styles.loginDark}>
+                <button className={Styles.loginDark} onClick={handleLogin}>
                     Log In
                 </button>
             </div>
