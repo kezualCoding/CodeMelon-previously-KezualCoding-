@@ -9,10 +9,18 @@ import { GoogleAuthProvider } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore"; 
 import { FaGoogle, FaLock, FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import { useEffect, useState } from 'react';
 
 function SignUp(){
     const navigate = useNavigate();
     const provider = new GoogleAuthProvider();
+    const [showPage ,setShowPage] = useState(false);
+
+    useEffect(() => {  
+        setTimeout(() => {
+            setShowPage(true);
+        }, 1);
+    }, [])
 
     const signInWithGoogle = async () => {
         try {
@@ -23,6 +31,13 @@ function SignUp(){
             console.log(error.message);
         }
     };
+
+    const goToSignIn = () => {
+        setShowPage(false);
+        setTimeout(() => {
+            navigate('/signin');
+        }, 800);
+    }
 
     const handlesignUp = async (e) => {
         e.preventDefault();
@@ -52,7 +67,7 @@ function SignUp(){
     return (
         <div className={Styles.container}>
             <div className={Styles.imageContainer}></div>
-            <div className={Styles.signUp}>
+            <div className = {`${Styles.signUp} ${showPage ? Styles.signUpStart : ""}`} >
                 <form onSubmit={handlesignUp} className={Styles.signUpForm}>
                     <h1 className={Styles.heading}>Sign Up</h1>
                     <div className={Styles.inputBlock}>
@@ -72,7 +87,7 @@ function SignUp(){
                     <br />
                     <button type="submit" className={Styles.submitBtn}>Sign Up</button>
                 </form>
-                <p className={Styles.alreadyAcc}>Already have an account? <Link to = '/signin' style={{"color": "#fff"}}>Sign In</Link></p>
+                <p className={Styles.alreadyAcc}>Already have an account? <span onClick = {goToSignIn} style={{"color": "#fff", "cursor": "pointer"}}>Sign In</span></p>
                 <button onClick={signInWithGoogle} className={Styles.googleSignIn}>Sign In with Google <FaGoogle className={Styles.googleIcon}/></button>
             </div>
         </div>

@@ -7,10 +7,27 @@ import { GoogleAuthProvider } from "firebase/auth";
 import { FaGoogle, FaLock } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 function SignIn(props){
     const navigate = useNavigate();
     const provider = new GoogleAuthProvider();
+    const [showPage ,setShowPage] = useState(false);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setShowPage(true);
+        }, 1);
+    }, []);
+
+
+
+    const goToSignUp = () => {
+        setShowPage(false);
+        setTimeout(() => {
+            navigate('/signup');
+        }, 800);
+    }
 
     const signInWithGoogle = async () => {
         try {
@@ -41,7 +58,7 @@ function SignIn(props){
     return (
         <div className={Styles.container}>
             <div className={Styles.imageContainer1}></div>
-            <div className={Styles.signIn}>
+            <div className = {`${Styles.signIn} ${showPage ? Styles.signInStart : ""}`} >
                 <form onSubmit={handlesignIn} className={Styles.signInForm}>
                     <h1 className={Styles.heading1}>Sign In</h1>
                     <div className={Styles.inputBlock1}>
@@ -55,7 +72,7 @@ function SignIn(props){
                     <button type="submit" className={Styles.submitBtn1}>Sign Up</button>
                 </form>
                 <button onClick={signInWithGoogle} className={Styles.googleSignIn1}>Sign In with Google <FaGoogle className={Styles.googleIcon}/></button>
-                <p className={Styles.noAcc}>Don't have an account? <Link to = "/signup" style={{"color": "#fff"}}>Sign Up</Link></p>
+                <p className={Styles.noAcc}>Don't have an account? <span onClick = {goToSignUp} style={{"color": "#fff", "cursor": "pointer"}}>Sign Up</span></p>
             </div>
         </div>
     )

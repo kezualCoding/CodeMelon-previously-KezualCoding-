@@ -28,6 +28,8 @@
     color: white;
     border: none;
     box-shadow: 0 0 10px 0 silver;
+    transform: translateX(-350px);
+    transition: all 1s ease;
 }
 
 .signUpForm {
@@ -53,6 +55,7 @@
     filter: blur(1px);
     background-size: cover;
     background-position: center;
+    z-index: 10;
 }
 
 .inputBlock {
@@ -144,6 +147,8 @@
     color: white;
     border: none;
     box-shadow: 0 0 10px 0 silver;
+    transform: translateX(-350px);
+    transition: all 1s ease;
 }
 
 
@@ -158,6 +163,7 @@
     filter: blur(1px);
     background-size: cover;
     background-position: center;
+    z-index: 10;
 }
 
 .signInForm {
@@ -230,3 +236,12 @@
     color: #fff;
     font-weight: 700;
 }
+
+.signUpStart {
+    transform: translateX(0);
+    visibility: visible;
+}
+
+.signInStart {
+    transform: translateX(0);
+}  
