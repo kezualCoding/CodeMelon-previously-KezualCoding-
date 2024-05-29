@@ -18,7 +18,7 @@ const NotFoundBrokenUrlPage = () => {
         <p style={{fontSize: "30px"}} className={`${clicked ? Styles.textBlur : ''}`}>Looks Like The Page You Are Finding Is Lost In Space</p>
         <p style={{fontSize: "30px"}} className={`${clicked ? Styles.textBlur : ''}`}>While Our Team Is Trying To Find The Page</p>
         <p style={{fontSize: "30px"}} className={`${clicked ? Styles.textBlur : ''}`}>We Should Guide You To Earth</p>
-        <p style={{fontSize: "30px"}} className={`${clicked ? Styles.textBlur : ''}`}>Click Rocket To Come Back To Earth !!!! Traveller</p>
+        <p style={{fontSize: "30px"}} className={`${clicked ? Styles.textBlur : ''}`}>Click Rocket To Come Back To Earth !!!! Explorer</p>
         <img src={SpaceShip} alt="SpaceShip" className={`${Styles.spaceShip} ${clicked ? Styles.spaceShipActive : Styles.SpaceShip}`} onClick={handleHome}/>
         <p className={`${clicked ? Styles.again : Styles.againBefore}`} style ={{"transition": "all 2s ease"}}>We Will Meet Again</p>
       </div>  

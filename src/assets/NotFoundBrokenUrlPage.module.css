@@ -29,6 +29,7 @@
     font-weight: bold;
     cursor: pointer;
 }
+
 .spaceShip{
     position: absolute;
     width : 100px;
@@ -49,6 +50,7 @@
 .againBefore{
     color: black;
 }
+
 .again{
     color: silver;
     cursor: pointer;
