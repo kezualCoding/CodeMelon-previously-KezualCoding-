@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/
 import Styles from '../assets/SignUp.module.css'
 import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { db } from '../firebase';
 import { signInWithPopup } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
@@ -53,26 +54,26 @@ function SignUp(){
             <div className={Styles.imageContainer}></div>
             <div className={Styles.signUp}>
                 <form onSubmit={handlesignUp} className={Styles.signUpForm}>
-                    <h1>Sign Up</h1>
-                    <div className={Styles.userBlock}>
-                        <input type="text" placeholder="Username" required />
+                    <h1 className={Styles.heading}>Sign Up</h1>
+                    <div className={Styles.inputBlock}>
+                        <input type="text" placeholder="Username" className={Styles.input} required />
                         <FaUser  className={Styles.icon}/>
                     </div>
                     <br />
-                    <div className={Styles.emailBlock}>
-                        <input type="email" placeholder="Email" required />
+                    <div className={Styles.inputBlock}>
+                        <input type="email" placeholder="Email" className={Styles.input} required />
                         <MdEmail className={Styles.icon}/>
                     </div>
                     <br />
-                    <div className={Styles.emailBlock}>
-                        <input type="password" placeholder="Password" required />
+                    <div className={Styles.inputBlock}>
+                        <input type="password" placeholder="Password" className={Styles.input} required />
                         <FaLock  className={Styles.icon}/>
                     </div>
                     <br />
-                    <button type="submit">Sign Up</button>
+                    <button type="submit" className={Styles.submitBtn}>Sign Up</button>
                 </form>
-                <br />
-                <button onClick={signInWithGoogle} className={Styles.googleSignIn}>Sign In with Google <FaGoogle className={Styles.icon}/></button>
+                <p className={Styles.alreadyAcc}>Already have an account? <Link to = '/signin' style={{"color": "#fff"}}>Sign In</Link></p>
+                <button onClick={signInWithGoogle} className={Styles.googleSignIn}>Sign In with Google <FaGoogle className={Styles.googleIcon}/></button>
             </div>
         </div>
     )
