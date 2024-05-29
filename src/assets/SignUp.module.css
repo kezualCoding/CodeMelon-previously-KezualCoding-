@@ -1,26 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
 .container{
+    min-height: 100vh;
+    background-color: rgba(187, 110, 110, 0.893);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: black;
 }
+
 
 .signUp{
+    border-radius: 10px;
+    width: 400px;
+    height: 450px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: black;
-    color: silver;
+    color: white;
     padding: 20px;
-    border-radius: 10px;
+    border: none;
     box-shadow: 0 0 10px 0 silver;
-
 }
 
-.signUpForm{
-    color: silver;
+
+.imageContainer {
+    width: 400px;
+    height: 450px;
     display: flex;
-    flex-direction: column;
+    border-radius: 10px;
+    background-image: url('https://images.unsplash.com/photo-1504643220124-8317cca212bd?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: contain;
 }
