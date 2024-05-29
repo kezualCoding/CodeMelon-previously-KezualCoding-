@@ -15,7 +15,6 @@
     justify-content: center;
 }
 
-
 .signUp{
     margin-top: 150px;
     border-radius: 10px;
@@ -127,6 +126,107 @@
 .alreadyAcc {
     position: relative;
     top: 5px;
+    color: #fff;
+    font-weight: 700;
+}
+
+
+.signIn{
+    margin-top: 150px;
+    border-radius: 10px;
+    width: 350px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: white;
+    border: none;
+    box-shadow: 0 0 10px 0 silver;
+}
+
+
+.imageContainer1 {
+    box-shadow: 0 0 10px 0 silver;
+    margin-top: 150px;
+    width: 350px;
+    height: 450px;
+    display: flex;
+    border-radius: 10px;
+    background-image: url('https://images.unsplash.com/photo-1600453364898-255c24a205d2?q=80&w=2800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    filter: blur(1px);
+    background-size: cover;
+    background-position: center;
+}
+
+.signInForm {
+    height: 450px;
+    width: 100%;
+    padding: 25px;
+}
+
+.heading1 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.inputBlock1 {
+    margin-top: 25px;
+    position: relative;
+    width: 100%;
+    height: 45px;
+    margin-bottom: 25px;
+}
+
+.input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    font-size: 1rem;
+    color: #fff;
+    padding: 20px 45px 20px 20px;
+}
+
+.submitBtn1 {
+    width: 100%;
+    height: 40px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0,1);
+    font-size: 1rem;
+    color: #333;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.googleSignIn1 {
+    position: relative;
+    top: -60px;
+    width: 70%;
+    height: 40px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0,1);
+    font-size: 1rem;
+    color: #333;
+    font-weight: 700;
+}
+
+.noAcc {
+    position: relative;
+    top: -30px;
     color: #fff;
     font-weight: 700;
 }

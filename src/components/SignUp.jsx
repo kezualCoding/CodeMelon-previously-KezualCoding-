@@ -67,7 +67,7 @@ function SignUp(){
                     <br />
                     <div className={Styles.inputBlock}>
                         <input type="password" placeholder="Password" className={Styles.input} required />
-                        <FaLock  className={Styles.icon}/>
+                        <FaLock className={Styles.icon}/>
                     </div>
                     <br />
                     <button type="submit" className={Styles.submitBtn}>Sign Up</button>

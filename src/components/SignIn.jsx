@@ -4,7 +4,9 @@ import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 import { signInWithPopup } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
-
+import { FaGoogle, FaLock } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { Link } from 'react-router-dom';
 
 function SignIn(props){
     const navigate = useNavigate();
@@ -38,15 +40,22 @@ function SignIn(props){
 
     return (
         <div className={Styles.container}>
+            <div className={Styles.imageContainer1}></div>
             <div className={Styles.signIn}>
                 <form onSubmit={handlesignIn} className={Styles.signInForm}>
-                    <h1>Sign Up</h1>
-                    <input type = 'text' placeholder = 'Username' required />
-                    <input type="email" placeholder="Email" required />
-                    <input type="password" placeholder="Password" required />
-                    <button type="submit">Sign Up</button>
+                    <h1 className={Styles.heading1}>Sign In</h1>
+                    <div className={Styles.inputBlock1}>
+                        <input type="email" placeholder="Email" className={Styles.input} required />
+                        <MdEmail className={Styles.icon}/>
+                    </div>
+                    <div className={Styles.inputBlock1}>
+                        <input type="password" placeholder="Password" className={Styles.input} required />
+                        <FaLock className={Styles.icon}/>
+                    </div>
+                    <button type="submit" className={Styles.submitBtn1}>Sign Up</button>
                 </form>
-                <button onClick={signInWithGoogle} className={Styles.googleSignIn}>Sign In with Google</button>
+                <button onClick={signInWithGoogle} className={Styles.googleSignIn1}>Sign In with Google <FaGoogle className={Styles.googleIcon}/></button>
+                <p className={Styles.noAcc}>Don't have an account? <Link to = "/signup" style={{"color": "#fff"}}>Sign Up</Link></p>
             </div>
         </div>
     )
