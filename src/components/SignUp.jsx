@@ -6,9 +6,8 @@ import { db } from '../firebase';
 import { signInWithPopup } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore"; 
-
-
-
+import { FaGoogle, FaLock, FaUser } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 
 function SignUp(){
     const navigate = useNavigate();
@@ -32,7 +31,7 @@ function SignUp(){
         const password = form.elements[2].value;
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            await setDoc(doc(db, 'users', username), {
+            await setDoc(doc(db, 'users', userCredential.user.uid), {
                 username: username,
                 email: email,
                 profile_url: '',
@@ -42,7 +41,6 @@ function SignUp(){
                 points: 0,
                 accounts: {hackerrank:'', codeforces:'', codechef:'', leetcode:''},
                 verified: false,
-                uid : userCredential.user.uid
             });
             navigate('/signin')
         } catch(e) {
@@ -52,18 +50,33 @@ function SignUp(){
 
     return (
         <div className={Styles.container}>
+            <div className={Styles.imageContainer}></div>
             <div className={Styles.signUp}>
                 <form onSubmit={handlesignUp} className={Styles.signUpForm}>
                     <h1>Sign Up</h1>
-                    <input type="text" placeholder="Username" required />
-                    <input type="email" placeholder="Email" required />
-                    <input type="password" placeholder="Password" required />
+                    <div className={Styles.userBlock}>
+                        <input type="text" placeholder="Username" required />
+                        <FaUser  className={Styles.icon}/>
+                    </div>
+                    <br />
+                    <div className={Styles.emailBlock}>
+                        <input type="email" placeholder="Email" required />
+                        <MdEmail className={Styles.icon}/>
+                    </div>
+                    <br />
+                    <div className={Styles.emailBlock}>
+                        <input type="password" placeholder="Password" required />
+                        <FaLock  className={Styles.icon}/>
+                    </div>
+                    <br />
                     <button type="submit">Sign Up</button>
                 </form>
-                <button onClick={signInWithGoogle} className={Styles.googleSignIn}>Sign In with Google</button>
+                <br />
+                <button onClick={signInWithGoogle} className={Styles.googleSignIn}>Sign In with Google <FaGoogle className={Styles.icon}/></button>
             </div>
         </div>
     )
+
 }
 
 export default SignUp;
