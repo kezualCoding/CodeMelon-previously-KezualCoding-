@@ -45,7 +45,7 @@ function App() {
   }, [theme])
 
   return (
-    <CheckConnection>
+    <CheckConnection theme = {theme}>
       <Router>
       <Navbar userdata = {userdata}/>
       <ToastContainer 
