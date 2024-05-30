@@ -1,6 +1,6 @@
-# Project Title
+# Kezual Coding
 
-![Project Image](link-to-project-image)
+![Project Image](./readmeAssets/banner.png)
 
 ## Table of Contents
 
