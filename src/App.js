@@ -4,13 +4,13 @@ import Navbar from './components/Navbar';
 import { useEffect, useState } from 'react';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
-import { set } from 'firebase/database';
+// import { set } from 'firebase/database';
 import { ToastContainer } from 'react-toastify';
 import Profile from './components/Profile';
 import 'react-toastify/dist/ReactToastify.css';
 import NotFoundBrokenUrlPage from './components/NotFoundBrokenUrlPage';
 import HomePage from './components/HomePage';
-import CheckConnection from './components/NetworkConnectionLost';
+import CheckConnection from './components/NetworkLostDark';
 
 function App() {
   const [theme, setTheme] = useState(JSON.parse(window.localStorage.getItem('theme')) || 'dark');
