@@ -10,7 +10,7 @@ import Profile from './components/Profile';
 import 'react-toastify/dist/ReactToastify.css';
 import NotFoundBrokenUrlPage from './components/NotFoundBrokenUrlPage';
 import HomePage from './components/HomePage';
-import CheckConnection from './components/NetworkLostDark';
+import CheckConnection from './components/NetworkLostLight';
 
 function App() {
   const [theme, setTheme] = useState(JSON.parse(window.localStorage.getItem('theme')) || 'dark');

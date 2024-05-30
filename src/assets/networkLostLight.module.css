@@ -1,6 +1,5 @@
 .body {
   height: 100vh;
-  color: black;
   width: 100vw;
   display: flex;
 }
@@ -19,13 +18,13 @@
   border-radius: 5px;
   border: none;
   padding: 40px;
-  box-shadow: 0 0 10px 0 silver;
+  box-shadow: 0 0 10px 0 rgb(116, 116, 116);
   position: absolute;
   top: 90px;
   letter-spacing: 1px;
   left: 40px;
   z-index: 1000;
-  color: white;
+  color: black;
   min-height: 250px;
   min-width: 400px;
 }
