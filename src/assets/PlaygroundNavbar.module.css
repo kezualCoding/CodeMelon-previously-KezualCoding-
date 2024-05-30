@@ -1,0 +1,73 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  height: 60px;
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+}
+
+.part1 {
+  margin-left: 16px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.questionName {
+  margin-left: 10px;
+  font-size: 14px;
+  color: white;
+}
+
+.backArrow {
+  height: 14px;
+  color: white;
+}
+
+.part2 {
+  margin-right: 16px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pointsBtn {
+  color: white;
+  padding: 0px 17px 8px 17px;
+  font-size: 13px;
+  border: 0.5px solid rgb(70, 69, 69);
+  border-radius: 10px;
+  background-color: black;
+  font-weight: bold;
+}
+
+.coinImage {
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  position: relative;
+  top: 6px;
+}
+
+.runBtn {
+  margin-left: 10px;
+  color: white;
+  padding: 8px 17px;
+  font-size: 14px;
+  border: 0.5px solid rgb(70, 69, 69);
+  border-radius: 7px;
+  background-color: black;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.submitBtn {
+  color: white;
+  font-weight: bold;
+  padding: 8px 17px;
+  font-size: 14px;
+  border: 0.5px solid rgb(70, 69, 69);
+  border-radius: 7px;
+  background-color: rgb(47, 115, 234);
+}

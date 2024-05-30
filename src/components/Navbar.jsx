@@ -7,7 +7,6 @@ function Navbar(props){
             <SideComponent {...props}/>
         </div>
     )
-
 }
 
 export default Navbar;

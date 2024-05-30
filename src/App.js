@@ -10,7 +10,8 @@ import Profile from './components/Profile';
 import 'react-toastify/dist/ReactToastify.css';
 import NotFoundBrokenUrlPage from './components/NotFoundBrokenUrlPage';
 import HomePage from './components/HomePage';
-import CheckConnection from './components/NetworkLostLight';
+import CheckConnection from './components/CheckConnectionLightMode';
+import Playground from './components/Playground';
 
 function App() {
   const [theme, setTheme] = useState(JSON.parse(window.localStorage.getItem('theme')) || 'dark');
@@ -59,6 +60,7 @@ function App() {
         <Route path = "/signup" element ={<SignUp />} />
         <Route path = "/signin" element ={<SignIn  setUserdata = {setUserdata}/>} />
         <Route path = '/profile/:username' element = {<Profile userdata = {userdata} themeTools = {themeTools} setUserdata = {setUserdata}/>} />
+        <Route path = "/playground" element={<Playground />} />
         <Route path = "*" element = {<NotFoundBrokenUrlPage />} />
         <Route path='/' element = {<HomePage />} />
       </Routes>
