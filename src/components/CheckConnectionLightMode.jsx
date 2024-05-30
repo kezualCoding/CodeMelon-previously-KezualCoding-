@@ -1,7 +1,7 @@
 import React from 'react';
 import Styles from '../assets/networkLostLight.module.css';
 import { Detector } from "react-detect-offline";
-import wallpaper from '../assets/images/networkLostLight.jpg';
+import wallpaper from '../assets/images/LightConnectionLost.png';
 function CheckConnection(props) {
   return (
     <>

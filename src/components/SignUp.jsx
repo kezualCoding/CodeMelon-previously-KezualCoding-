@@ -10,6 +10,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { FaGoogle, FaLock, FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { useEffect, useState } from 'react';
+import boy from '../assets/images/WhatsApp Image 2024-05-30 at 15.47.42.jpeg';
 
 function SignUp(){
     const navigate = useNavigate();
