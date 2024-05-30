@@ -12,6 +12,10 @@ import { MdEmail } from "react-icons/md";
 import { useEffect, useState } from 'react';
 import boy from '../assets/images/WhatsApp Image 2024-05-30 at 15.47.42.jpeg';
 
+
+function removeSpace(str){
+    return str.replace(/\s/g, '');
+}
 function SignUp(){
     const navigate = useNavigate();
     const provider = new GoogleAuthProvider();
@@ -27,7 +31,19 @@ function SignUp(){
         try {
             const result = await signInWithPopup(auth, provider);
             const user = result.user;
-            console.log(user);
+            await setDoc(doc(db, 'users', removeSpace(user.displayName)), {
+                uid : user.uid,
+                email: user.email,
+                profile_url: user.photoURL,
+                bio: '',
+                followers: [],
+                following: [],
+                points: 0,
+                accounts: {hackerrank:'', codeforces:'', codechef:'', leetcode:''},
+                verified: true,
+            });
+            navigate('/');
+
         } catch (error) {
             console.log(error.message);
         }

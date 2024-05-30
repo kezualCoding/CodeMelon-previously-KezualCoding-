@@ -12,6 +12,7 @@ import NotFoundBrokenUrlPage from './components/NotFoundBrokenUrlPage';
 import HomePage from './components/HomePage';
 import CheckConnection from './components/CheckConnectionLightMode';
 import Playground from './components/Playground';
+import { auth } from './firebase';
 
 function App() {
   const [theme, setTheme] = useState(JSON.parse(window.localStorage.getItem('theme')) || 'dark');
@@ -35,6 +36,13 @@ function App() {
     theme: theme,
     setTheme: setTheme
   }; 
+
+  useEffect(() => {
+    if(auth.currentUser){
+      setIsLoggedIn(true);
+      setToken(auth.currentUser.uid);
+    }
+  }, [auth])
 
   useEffect(() => {
     window.localStorage.setItem('userdata', JSON.stringify(userdata));
