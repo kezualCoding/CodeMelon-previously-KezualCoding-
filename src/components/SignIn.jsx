@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import Styles from '../assets/SignUp.module.css'
-import { auth } from '../firebase';
+import { auth, db } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 import { signInWithPopup } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
@@ -8,6 +8,11 @@ import { FaGoogle, FaLock } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { doc, setDoc } from 'firebase/firestore';
+
+function removeSpace(str){
+    return str.replace(/\s/g, '').toLowerCase();
+}
 
 function SignIn(props){
     const navigate = useNavigate();
@@ -33,22 +38,34 @@ function SignIn(props){
         try {
             const result = await signInWithPopup(auth, provider);
             const user = result.user;
-            console.log(user);
+            await setDoc(doc(db, 'users', removeSpace(user.displayName)), {
+                uid : user.uid,
+                email: user.email,
+                profile_url: user.photoURL,
+                bio: '',
+                followers: [],
+                following: [],
+                points: 0,
+                accounts: {hackerrank:'', codeforces:'', codechef:'', leetcode:''},
+                verified: true,
+            });
+            props.setUserdata.setIsLoggedIn(true);
+            props.setUserdata.setToken(user.uid);
+            navigate('/');
+
         } catch (error) {
             console.log(error.message);
         }
     };
-
     const handlesignIn = async (e) => {
         e.preventDefault();
         const form = e.target;
         const email = form.elements[1].value;
         const password = form.elements[2].value;
         try {
-            const user = await signInWithEmailAndPassword(auth, email, password);
+            await signInWithEmailAndPassword(auth, email, password);
             props.setUserdata.setIsLoggedIn(true);
-            props.setUserdata.setToken(user.user.uid);
-            
+            props.setUserdata.setToken(auth.currentUser.uid);
             navigate('/');
         } catch(e) {
             console.log(e.message);
