@@ -13,10 +13,12 @@ import HomePage from './components/HomePage';
 import CheckConnection from './components/CheckConnectionLightMode';
 import Playground from './components/Playground';
 import { auth } from './firebase';
+import { onAuthStateChanged } from 'firebase/auth';
 
 function App() {
   const [theme, setTheme] = useState(JSON.parse(window.localStorage.getItem('theme')) || 'dark');
   const storedUserdata = JSON.parse(window.localStorage.getItem('userdata'));
+  const [user, setUser] = useState(JSON.parse(window.localStorage.getItem('user')) || null);
   const [isLoggedIn, setIsLoggedIn] = useState(
     storedUserdata?.isLoggedIn || false
   );
@@ -38,13 +40,6 @@ function App() {
   }; 
 
   useEffect(() => {
-    if(auth.currentUser){
-      setIsLoggedIn(true);
-      setToken(auth.currentUser.uid);
-    }
-  }, [auth])
-
-  useEffect(() => {
     window.localStorage.setItem('userdata', JSON.stringify(userdata));
   }, [isLoggedIn, token]);
 
@@ -52,10 +47,19 @@ function App() {
     window.localStorage.setItem('theme', JSON.stringify(theme));
   }, [theme])
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      window.localStorage.setItem('user', JSON.stringify(currentUser));
+      setUser(currentUser);
+    });
+
+    // Cleanup subscription on unmount
+    return () => unsubscribe();
+  }, []);
   return (
     <CheckConnection theme = {theme}>
       <Router>
-      <Navbar userdata = {userdata}/>
+      <Navbar userdata = {userdata} setUserdata = {setUserdata}/>
       <ToastContainer 
         position= "bottom-right"
         pauseOnHover = {false}
@@ -65,7 +69,7 @@ function App() {
       />
       <Routes>
         {/* <Route path = "/" element ={<Navbar />} /> */}
-        <Route path = "/signup" element ={<SignUp />} />
+        <Route path = "/signup" element ={<SignUp setUserdata = {setUserdata}/>} />
         <Route path = "/signin" element ={<SignIn  setUserdata = {setUserdata}/>} />
         <Route path = '/profile/:username' element = {<Profile userdata = {userdata} themeTools = {themeTools} setUserdata = {setUserdata}/>} />
         <Route path = "/playground" element={<Playground />} />

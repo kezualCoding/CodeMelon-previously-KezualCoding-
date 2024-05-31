@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react';
 import { doc, setDoc } from 'firebase/firestore';
 
 function removeSpace(str){
-    return str.replace(/\s/g, '');
+    return str.replace(/\s/g, '').toLowerCase();
 }
 
 function SignIn(props){
@@ -49,6 +49,8 @@ function SignIn(props){
                 accounts: {hackerrank:'', codeforces:'', codechef:'', leetcode:''},
                 verified: true,
             });
+            props.setUserdata.setIsLoggedIn(true);
+            props.setUserdata.setToken(user.uid);
             navigate('/');
 
         } catch (error) {
@@ -62,8 +64,9 @@ function SignIn(props){
         const password = form.elements[2].value;
         try {
             await signInWithEmailAndPassword(auth, email, password);
-            console.log(auth.currentUser);
-            // navigate('/');
+            props.setUserdata.setIsLoggedIn(true);
+            props.setUserdata.setToken(auth.currentUser.uid);
+            navigate('/');
         } catch(e) {
             console.log(e.message);
         }

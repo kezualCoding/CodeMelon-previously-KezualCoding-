@@ -16,7 +16,7 @@ import boy from '../assets/images/WhatsApp Image 2024-05-30 at 15.47.42.jpeg';
 function removeSpace(str){
     return str.replace(/\s/g, '');
 }
-function SignUp(){
+function SignUp(props){
     const navigate = useNavigate();
     const provider = new GoogleAuthProvider();
     const [showPage ,setShowPage] = useState(false);
@@ -42,6 +42,8 @@ function SignUp(){
                 accounts: {hackerrank:'', codeforces:'', codechef:'', leetcode:''},
                 verified: true,
             });
+            props.setUserdata.setIsLoggedIn(true);
+            props.setUserdata.setToken(user.uid);
             navigate('/');
 
         } catch (error) {

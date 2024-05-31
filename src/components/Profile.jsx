@@ -5,6 +5,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import { db, auth } from '../firebase'; // make sure to import auth
 import { doc, getDoc, updateDoc } from 'firebase/firestore'; // import updateDoc
 import Modal from 'react-modal'; // import Modal
+import { imgDb } from '../firebase'; // import imgDb
+import { ref } from 'firebase/storage';
+import { uploadBytes, getDownloadURL } from 'firebase/storage';
+import { update } from 'firebase/database';
+import { updateProfile } from 'firebase/auth';
 
 const Profile = (props) => {
   const params = useParams();
@@ -14,6 +19,7 @@ const Profile = (props) => {
   const [error, setError] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false); // state for modal
   const [newData, setNewData] = useState({}); // state for new user data
+  const [img, setImg] = useState(null); // state for image
 
   const currentUser = auth.currentUser;
   console.log(currentUser) // get the currently signed-in user
@@ -21,6 +27,12 @@ const Profile = (props) => {
   const handleToast = () => {
     toast.success("Success Notification !", {});
   }
+
+  const handleImageChange = (e) => {
+    if (e.target.files[0]) {
+      setImg(e.target.files[0]);
+    }
+  };
 
   const logOutUser = async () => {
     await auth.signOut(); // use signOut() function to log out the user
@@ -38,6 +50,15 @@ const Profile = (props) => {
       const docRef = doc(db, 'users', username);
       await updateDoc(docRef, newData);
       setModalIsOpen(false); // close the modal after updating
+      if (img){
+        setLoading(true);
+        const storageRef = ref(imgDb, `usersProfiles/${auth.currentUser.uid}/${img.name}`);
+        await uploadBytes(storageRef, img);
+        const url = await getDownloadURL(storageRef);
+        await updateDoc(docRef, { profile_url: url });
+        updateProfile(auth.currentUser, { photoURL: url });
+        setLoading(false);
+      }
     } else {
       console.log('You do not have permission to edit this profile');
     }
@@ -81,6 +102,7 @@ const Profile = (props) => {
             <input type="text" placeholder="Full Name" onChange={e => setNewData({...newData, fullname: e.target.value})} />
             <input type="text" placeholder="Email" onChange={e => setNewData({...newData, email: e.target.value})} />
             <input type="text" placeholder="Bio" onChange={e => setNewData({...newData, bio: e.target.value})} />
+            <input type="file" onChange={handleImageChange} />
             <button onClick={handleUpdate}>Submit</button>
             <button onClick={() => setModalIsOpen(false)}>Close</button>
           </Modal>
