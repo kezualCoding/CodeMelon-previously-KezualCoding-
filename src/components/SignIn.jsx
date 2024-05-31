@@ -38,8 +38,8 @@ function SignIn(props){
         try {
             const result = await signInWithPopup(auth, provider);
             const user = result.user;
-            await setDoc(doc(db, 'users', removeSpace(user.displayName)), {
-                uid : user.uid,
+            await setDoc(doc(db, 'users', user.uid), {
+                username: removeSpace(user.displayName),
                 email: user.email,
                 profile_url: user.photoURL,
                 bio: '',
@@ -86,10 +86,10 @@ function SignIn(props){
                         <input type="password" placeholder="Password" className={Styles.input} required />
                         <FaLock className={Styles.icon}/>
                     </div>
-                    <button type="submit" className={Styles.submitBtn1}>Sign Up</button>
+                    <button type="submit" className={Styles.submitBtn1}>Sign In</button>
                 </form>
                 <button onClick={signInWithGoogle} className={Styles.googleSignIn1}>Sign In with Google <FaGoogle className={Styles.googleIcon}/></button>
-                <p className={Styles.noAcc}>Don't have an account? <span onClick = {goToSignUp} style={{"color": "#fff", "cursor": "pointer"}}>Sign Up</span></p>
+                <p className={Styles.noAcc}>Don't have an account? <span onClick = {goToSignUp} style={{"color": "#fff", "cursor": "pointer" ,"textDecoration" : "underline"}}>Sign Up</span></p>
             </div>
         </div>
     )
