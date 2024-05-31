@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/kezualcoding-react/static/css/main.b6c67348.css",
+    "main.js": "/kezualcoding-react/static/js/main.7a50a093.js",
+    "static/js/453.dd45e4f2.chunk.js": "/kezualcoding-react/static/js/453.dd45e4f2.chunk.js",
+    "static/media/DarkConnectionLost.png": "/kezualcoding-react/static/media/DarkConnectionLost.ca82927d1aa4a4d29928.png",
+    "static/media/LightConnectionLost.png": "/kezualcoding-react/static/media/LightConnectionLost.9bf3cbd961858176bca3.png",
+    "static/media/404notFound.png": "/kezualcoding-react/static/media/404notFound.c8667dc5f7d30275e457.png",
+    "static/media/trail-removebg-preview.png": "/kezualcoding-react/static/media/trail-removebg-preview.2b2351cef8eeb926ee2c.png",
+    "static/media/refresh.jpeg": "/kezualcoding-react/static/media/refresh.f46aa885306e00ab674d.jpeg",
+    "static/media/xp-coin.webp": "/kezualcoding-react/static/media/xp-coin.6db635c1c47c46af9aee.webp",
+    "index.html": "/kezualcoding-react/index.html",
+    "main.b6c67348.css.map": "/kezualcoding-react/static/css/main.b6c67348.css.map",
+    "main.7a50a093.js.map": "/kezualcoding-react/static/js/main.7a50a093.js.map",
+    "453.dd45e4f2.chunk.js.map": "/kezualcoding-react/static/js/453.dd45e4f2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b6c67348.css",
+    "static/js/main.7a50a093.js"
+  ]
+}
