@@ -14,6 +14,7 @@ import CheckConnection from './components/CheckConnectionLightMode';
 import Playground from './components/Playground';
 import { auth } from './firebase';
 import { onAuthStateChanged } from 'firebase/auth';
+import LoadingPage from './components/LoadingPage';
 
 function App() {
   const [theme, setTheme] = useState(JSON.parse(window.localStorage.getItem('theme')) || 'dark');
@@ -75,6 +76,7 @@ function App() {
         <Route path = "/playground" element={<Playground />} />
         <Route path = "*" element = {<NotFoundBrokenUrlPage />} />
         <Route path='/' element = {<HomePage />} />
+        <Route path = "/loading" element = {<LoadingPage />} />
       </Routes>
     </Router>
     </CheckConnection>

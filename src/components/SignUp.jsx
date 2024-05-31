@@ -6,12 +6,10 @@ import { Link } from 'react-router-dom';
 import { db } from '../firebase';
 import { signInWithPopup } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore"; 
+import { doc, getDoc, setDoc } from "firebase/firestore"; 
 import { FaGoogle, FaLock, FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { useEffect, useState } from 'react';
-import boy from '../assets/images/WhatsApp Image 2024-05-30 at 15.47.42.jpeg';
-
 
 function removeSpace(str){
     return str.replace(/\s/g, '');
@@ -31,21 +29,28 @@ function SignUp(props){
         try {
             const result = await signInWithPopup(auth, provider);
             const user = result.user;
-            await setDoc(doc(db, 'users', removeSpace(user.displayName)), {
-                uid : user.uid,
-                email: user.email,
-                profile_url: user.photoURL,
-                bio: '',
-                followers: [],
-                following: [],
-                points: 0,
-                accounts: {hackerrank:'', codeforces:'', codechef:'', leetcode:''},
-                verified: true,
-            });
+            const userDocRef = doc(db, 'users', user.uid);
+            const userDocSnap = await getDoc(userDocRef);
+    
+            if (!userDocSnap.exists()) {
+                // The user does not exist, so create a new user document
+                await setDoc(userDocRef, {
+                    username : removeSpace(user.displayName),
+                    email: user.email,
+                    profile_url: user.photoURL,
+                    bio: '',
+                    followers: [],
+                    following: [],
+                    points: 0,
+                    accounts: {hackerrank:'', codeforces:'', codechef:'', leetcode:''},
+                    verified: true,
+                });
+            }
+    
             props.setUserdata.setIsLoggedIn(true);
             props.setUserdata.setToken(user.uid);
             navigate('/');
-
+    
         } catch (error) {
             console.log(error.message);
         }
@@ -106,7 +111,7 @@ function SignUp(props){
                     <br />
                     <button type="submit" className={Styles.submitBtn}>Sign Up</button>
                 </form>
-                <p className={Styles.alreadyAcc}>Already have an account? <span onClick = {goToSignIn} style={{"color": "#fff", "cursor": "pointer"}}>Sign In</span></p>
+                <p className={Styles.alreadyAcc}>Already have an account? <span onClick = {goToSignIn} style={{"color": "#fff", "cursor": "pointer", "textDecoration" : "underline"}}>Sign In</span></p>
                 <button onClick={signInWithGoogle} className={Styles.googleSignIn}>Sign In with Google <FaGoogle className={Styles.googleIcon}/></button>
             </div>
         </div>

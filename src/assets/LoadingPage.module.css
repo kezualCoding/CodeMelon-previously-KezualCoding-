@@ -1,0 +1,28 @@
+.loadingPageDark{
+    background-color: black;
+    color: silver;
+    min-height: 94vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loadingDark {
+    font-size: 140px;
+    letter-spacing: 10px;
+    font-weight: bold;
+    -webkit-box-reflect: below 0px linear-gradient(transparent, #0002);
+    outline: none;
+    animation: animate 2s linear infinite;
+}
+
+@keyframes animate {
+    0%{
+        color : silver;
+        text-shadow: none;
+    }
+    100%{
+        color: white;
+        text-shadow: 0 0 10px white, 0 0 2px white, 0 0 4px white, 0 0 10px white, 0 0 2px white, 0 0 10px white, 0 0 2px white, 0 0 10px white, 0 0 10px white, 0 0 10px white;
+    }
+}
