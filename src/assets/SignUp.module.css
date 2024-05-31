@@ -7,7 +7,7 @@
 
 .container{
     min-height: 100vh;
-    background: url('https://firebasestorage.googleapis.com/v0/b/kezualcoding-react.appspot.com/o/Designer%20(6).png?alt=media&token=febad7cc-54a9-4d61-bbef-0d464ed31c57');
+    background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2944&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -159,7 +159,7 @@
     height: 450px;
     display: flex;
     border-radius: 10px;
-    background-image: url('https://firebasestorage.googleapis.com/v0/b/kezualcoding-react.appspot.com/o/Designer%20(4).png?alt=media&token=0e491cd3-3bc8-4060-8d8f-39b45d147def');
+    background-image: url('https://images.unsplash.com/photo-1652696290920-ee4c836c711e?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE5fHx8ZW58MHx8fHx8');
     filter: blur(1px);
     background-size: cover;
     background-position: center;
